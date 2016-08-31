@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      span {
+        display: inline-block;
+        width: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #eee;
+        cursor: default;
+      }
+
+      #IG, #IV {
+        float: left;
+        margin: 10px;
+      }
+
+      #IG input, #IV input {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+      }
+      #IG input:hover, #IV input:hover {
+        background-color: lightblue;
+      }
+      #IG input {
+        border: 1px solid black;
+      }
+      #IV input {
+        border: 1px solid #ccc;
+      }
+
+      hr {
+        clear: both;
+      }
+
+      #SPIN {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tectonic solver</h1>
+    <p>The objective of the Tectonic puzzle is to fill each group with numbers 1 through n, where n is the size of the group. Each number should only occur once per group. Each number should not border another cell with the same number (not even diagonally). There are no other restrictions. Numbers offset at 1.</p>
+    <p>This demo hooks up a finite domain solver to search for a solution and present it to you for a given puzzle. If it doesn't give you a solution there probably isn't one (or there's a bug).</p>
+    <hr>
+    <p>
+      Width and height set the width and height of the puzzle. You can clear the values of the grouping/values. The solve button will (re-)solve with current inputs. You can get as many solutions as you want, if there are more than one, by increasing the max.
+    </p>
+    <div>
+      <select id="P">
+        <option value="0">4x5</option>
+        <option value="1">9x5</option>
+        <option value="2">9x11</option>
+      </select>
+      <button id="L">Load</button>
+      <button id="S">Save</button>
+      <button id="D">Delete</button>
+      <button id="C">Clear</button>
+      <button id="DUMP">Dump</button>
+      <br><br>
+      W <input id="W" type="number" value="4" style="width: 40px;">
+      H <input id="H" type="number" value="5" style="width: 40px;">
+      <button id="CG">Clear groups</button>
+      <button id="CV">Clear values</button>
+      <button id="SOLVE">Solve</button>
+      <input id=T style="width: 20px; text-align: center;" value="2">x
+      <button id="EXP">Export</button>
+      <label><input id=AS type="checkbox" checked> Auto-solve on change</label>
+    </div>
+    <hr>
+    <p>
+      <b>Click on a cell to change it.</b>
+      Create groups by assigning their ids to each cell. Press up/down key for quick inc/dec.
+      Assign required values for the puzzle the same way. They are basically the initial values for the puzzle.
+    </p>
+    <div id="IG"></div>
+    <div id="IV"></div>
+
+    <hr>
+    <p>This is the resulting puzzle (grouping result and actual puzzle)...</p>
+    <pre id=A></pre>
+
+    <hr>
+    <hr>
+    <p>These are the solutions, if anything, trying to solve the puzzle. If there is no solution, there probably isn't one. Or at least that's the idea ;)</p>
+    <img id=SPIN src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH+GkNyZWF0ZWQgd2l0aCBhamF4bG9hZC5pbmZvACH5BAAKAAAAIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQACgABACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkEAAoAAgAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkEAAoAAwAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkEAAoABAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQACgAFACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQACgAGACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAAKAAcALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==">
+    <pre id=B></pre>
+
+    <script>
+      var module = {exports: {}};
+      var exports = {};
+    </script>
+    <script src="../finitedomain.js"></script>
+    <script src="tectonic.js"></script>
+
+  </body>
+</html>
