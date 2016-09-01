@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <title>Tectonic brain puzzle, automatic solver</title>
     <style>
       span {
         display: inline-block;
@@ -45,6 +47,7 @@
     <h1>Tectonic solver</h1>
     <p>The objective of the Tectonic puzzle is to fill each group with numbers 1 through n, where n is the size of the group. Each number should only occur once per group. Each number should not border another cell with the same number (not even diagonally). There are no other restrictions. Numbers offset at 1.</p>
     <p>This demo hooks up a finite domain solver to search for a solution and present it to you for a given puzzle. If it doesn't give you a solution there probably isn't one (or there's a bug).</p>
+    <p>See blog post for more details: <a href="https://qfox.github.io/puzzles/tectonic/">http://qfox.nl/weblog/380</a>. &copy; August 2016, <a href="qfox.nl">qfox.nl</a>.</p>
     <hr>
     <p>
       Width and height set the width and height of the puzzle. You can clear the values of the grouping/values. The solve button will (re-)solve with current inputs. You can get as many solutions as you want, if there are more than one, by increasing the max.
